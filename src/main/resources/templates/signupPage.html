@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{index :: page_header}"></head>
+<body>
+<nav th:replace="~{index :: page_navbar}"></nav>
+
+<div class="container mt-4 mb-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3>User Registration</h3>
+                </div>
+
+                <th:block th:if="${session.msg}">
+                    <p class="text-center text-success">[[${session.msg}]]</p>
+                    <th:block th:text="${@userService.removeSessionMessage()}"></th:block>
+                </th:block>
+
+                <div class="card-body">
+                    <form action="saveUser" method="post">
+                        <div class="form-group mb-2">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input name="firstName" type="text" class="form-control" id="firstName" placeholder="Enter first name" required>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input name="lastName" type="text" class="form-control" id="lastName" placeholder="Enter last name" required>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label for="mobileNumber" class="form-label">Mobile Number</label>
+                            <input name="mobileNumber" type="number" class="form-control" id="mobileNumber" placeholder="Enter mobile number" required>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label for="email" class="form-label">Email address</label>
+                            <input name="email" type="email" class="form-control" id="email" placeholder="Enter email" required>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="password" class="form-label">Password</label>
+                            <input name="password" type="password" class="form-control" id="password" placeholder="Enter Password" required>
+                        </div>
+
+                        <button class="btn btn-primary w-100">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="~{index:: page_footer}"></footer>
+</body>
+</html>
